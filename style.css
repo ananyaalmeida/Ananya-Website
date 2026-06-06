@@ -1,0 +1,401 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #d1f3c5; /* Soft pastel sage green */
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+.book-container {
+    perspective: 1500px; 
+}
+
+.book {
+    width: 450px;                 
+    height: 580px;                
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s ease-in-out;
+    cursor: pointer;
+    transform-origin: left center; 
+}
+
+.book.open {
+    transform: translateX(225px); 
+}
+
+/* --- CORE BOOK PANELS --- */
+.page-panel {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-style: preserve-3d;
+    transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transform-origin: left center;
+    pointer-events: none; 
+}
+
+/* Allow clicking the front cover when closed */
+#layerCover {
+    pointer-events: auto;
+}
+
+/* Enable page contents to be clicked ONLY when the book is open */
+.book.open .page-panel {
+    pointer-events: auto;
+}
+
+/* Base sheet layer doesn't need to steal clicks from foreground panels */
+.book.open #layerBase {
+    pointer-events: none;
+}
+
+/* Universal flip animation parameter */
+.page-panel.flipped {
+    transform: rotateY(-180deg);
+}
+
+/* --- PANEL FACES --- */
+.face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 35px;
+    backface-visibility: hidden;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.08);
+}
+
+.face.front {
+    transform: rotateY(0deg);
+}
+
+.face.back {
+    transform: rotateY(180deg);
+}
+
+/* --- COLOR THEMES --- */
+.pink-cover {
+    background-color: #fbcce1; /* Light Baby Pink */
+    color: #2c3e50;            
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;     
+    border-left: 10px solid #e0a3c4; 
+    border-radius: 0 10px 10px 0;
+}
+
+.face.back.pink-cover {
+    border-left: none;                 /* Remove the spine from the left */
+    border-right: 10px solid #e0a3c4;  /* Move the spine to the right side */
+    border-radius: 10px 0 0 10px;      /* Round the left corners instead of the right */
+}
+
+.white-page {
+    background-color: #fcfbf9; 
+    color: #333;
+}
+
+.pink-page{
+    background-color: #fbcce1;
+    color: #333;
+    
+}
+
+.yellow-page{
+    background-color: #f3e7b4;
+    color: #333;
+}
+
+/* Page Border Formatting depending on side */
+.face.front.white-page {
+    border-radius: 0 10px 10px 0;
+    border-left: 5px solid #ddd;
+}
+.face.back.white-page {
+    border-radius: 10px 0 0 10px;
+    border-right: 5px solid #ddd;
+}
+
+/* Typography Layout */
+.page-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.page-content h2 { margin-bottom: 20px; font-size: 1.8rem; font-weight: 700; color: #222; }
+.page-content p { font-size: 1rem; line-height: 1.6; color: #444; }
+.page-content h3 { margin-bottom: 20px; text-align: center; font-size: 1.5rem; letter-spacing: 1px; font-weight: 600; }
+.cover-title { text-align: center; padding: 20px; }
+.cover-title h1 { font-size: 2.2rem; font-weight: 800; }
+
+/* --- INTERACTIVE BUTTONS --- */
+.book-nav { display: flex; flex-direction: column; gap: 10px; }
+.nav-btn, .back-btn {
+    background: transparent;
+    border: 2px solid #333;
+    padding: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+.nav-btn:hover, .back-btn:hover { background-color: #333; color: #fcfbf9; }
+.back-btn { margin-top: 20px; align-self: flex-start; font-size: 0.85rem; padding: 5px 10px; }
+
+/* Inside inline text action button variant */
+.clean-sub-btn {
+    flex: 1;
+    background-color: #333;
+    color: #fff;
+    font-size: 0.85rem;
+    padding: 5px 10px;
+}
+.clean-sub-btn:hover {
+    background-color: transparent;
+    color: #333;
+}
+
+/* --- LARGE ABOUT ME PICTURES LAYOUT --- */
+.page-content.full-gallery {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 10px 0;
+}
+
+.photo-grid.large-layout {
+    display: flex; 
+    gap: 20px; 
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin-top: 0; 
+}
+
+.photo-placeholder.large-frame {
+    width: 175px;
+    height: 340px;
+    background-color: #f5f5f5;
+    border: 2px dashed #bbb;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.photo-placeholder.large-frame:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+    border-color: #888;
+}
+
+.photo-placeholder.large-frame img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+}
+
+/* --- 4-PICTURE GRID LAYOUT --- */
+.quad-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    width: 100%;
+    height: 100%;
+    max-height: 360px;
+    padding: 10px;
+}
+
+.mini-frame {
+    background-color: #f5f5f5;
+    border: 2px dashed #bbb;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.mini-frame:hover {
+    transform: scale(1.03);
+    border-color: #666;
+}
+
+.mini-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- INTERACTIVE VIDEO & BUTTON SETTINGS FOR QUAD GRID --- */
+.quad-photo-grid .mini-frame,
+#layerBase .back-btn {
+    pointer-events: auto !important; /* Force the videos AND the back button to bypass layerBase block */
+}
+
+.quad-photo-grid video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: #000;
+    display: block;
+}
+
+/* --- POINTER INDICATOR --- */
+.pointer-container {
+    position: absolute;
+    top: 45%; right: 20%; display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 30; pointer-events: none; transition: opacity 0.4s ease;
+}
+.pointer-text { font-family: 'Times New Roman', Times, serif; font-weight: bold; font-size: 1.3rem; color: #333; transform: rotate(-3deg); white-space: nowrap; }
+.straight-arrow { width: 75px; height: 30px; }
+.pointer-container.hidden { opacity: 0; }
+
+/* --- HER CAMPUS LANDSCAPE FIX WITH CAPTION --- */
+
+/* Target the specific panel containing hercampus.jpg to shift everything down */
+#layerHobbies .face.front .page-content {
+    justify-content: flex-start;
+    padding-top: 25px; /* Shifts text away from top edge boundary */
+}
+
+/* Targets hercampus's photo frame container to change it from vertical to wide landscape */
+#layerHobbies .face.front .photo-placeholder.large-frame {
+    width: 100%;         /* Make it wide to span across the page width */
+    height: 195px;       /* Adjusted slightly to leave room for the caption */
+    margin-top: 15px;    /* Pushes it away from the paragraph text safely */
+    overflow: visible;   /* Allows the caption below to be visible outside the bounding box */
+    position: relative;
+    margin-bottom: 25px; /* Adds spacing at the bottom so the caption doesn't overlap text below */
+}
+
+/* Target hercampus image specifically to make sure it frames rows properly */
+#layerHobbies .face.front .photo-placeholder.large-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%; /* Keeps faces centered without cutting out edge members */
+    border-radius: 12px;         /* Keeps your clean rounded corner borders matching */
+}
+
+/* Dynamic CSS Caption Insertion */
+#layerHobbies .face.front .photo-placeholder.large-frame::after {
+    content: "My beautiful ladies over at Her Campus :) Click to check out our Instagram"; 
+    position: absolute;
+    bottom: -22px;              
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 0.6rem;
+    font-style: italic;
+    color: #666;
+    font-weight: 500;
+}
+#layerHobbies .face.front .photo-placeholder.large-frame {
+    cursor: pointer;
+}
+
+/* --- CONTACT PAGE CENTER ALIGNMENT --- */
+.contact-cover-alignment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers content vertically */
+    align-items: center;     /* Centers content horizontally */
+    text-align: center;
+    height: 100%;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.contact-cover-alignment .cover-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px; /* Smooth, uniform spacing between text elements */
+}
+
+.contact-cover-alignment h2 {
+    font-size: 2.2rem;
+    margin: 0 0 5px 0;
+    color: #333;
+    font-weight: 800;
+}
+
+.contact-cover-alignment p {
+    font-size: 1rem;
+    color: #444;
+    max-width: 290px; /* Prevents text from stretching too wide */
+    line-height: 1.5;
+    margin: 0;
+}
+
+.contact-cover-alignment .contact-email {
+    font-weight: 500;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+/* Link Button Wrapper Settings */
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 220px; /* Limits horizontal width of action buttons */
+    margin-bottom: 15px;
+    pointer-events: auto !important; /* CRITICAL FIX: Forces upper flipped pages to drop structural interference */
+}
+
+.contact-btn {
+    display: block;
+    padding: 10px 15px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    text-align: center;
+    pointer-events: auto !important; /* CRITICAL FIX: Ensures individual button anchor links receive clicks */
+}
+
+.contact-btn:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Force back button to respect sizing constraints */
+.contact-cover-alignment .back-to-menu-btn {
+    margin-top: 5px;
+    width: 100%;
+    max-width: 220px;
+    align-self: center; /* Overrides global page layout left alignments */
+    pointer-events: auto !important; /* Ensures back to menu works flawlessly on base face */
+}
+
+.mini-frame img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}

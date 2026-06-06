@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ananya Almeida</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="pointer-container" id="clickMeIndicator">
+        <span class="pointer-text">Click me!</span>
+        <svg class="straight-arrow" viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg">
+            <path d="M90,20 L15,20" fill="none" stroke="#333" stroke-width="4" stroke-linecap="round"/>
+            <polygon points="10,20 25,12 25,28" fill="#333" />
+        </svg>
+    </div>
+
+    <div class="book-container">
+        <div class="book" id="myBook">
+            
+            <div class="page-panel" id="layerCover" style="z-index: 22;">
+                <div class="face front pink-cover">
+                    <div class="cover-title">
+                        <h1>Between the Lines: My Digital Resume</h1>
+                    </div>
+                </div>
+                <div class="face back yellow-page">
+                    <div class="page-content">
+                        <h2>Hi there!</h2>
+                        <p>I'm Ananya Almeida, welcome to my little corner of the internet 🧸☕️💌 </p>
+                        <p>To get to know me better, click on the tabs → </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-panel" id="layerAbout" style="z-index: 20;">
+                <div class="face front pink-page">
+                    <div class="page-content">
+                        <h3>Explore</h3>
+                        <nav class="book-nav">
+                            <button class="nav-btn" data-target="about">About Me</button>
+                            <button class="nav-btn" data-target="education">Education</button>
+                            <button class="nav-btn" data-target="experience">Experience</button>
+                            <button class="nav-btn" data-target="projects">Projects</button>
+                            <button class="nav-btn" data-target="leadership">Leadership</button>
+                            <button class="nav-btn" data-target="hobbies">Hobbies</button>
+                            <button class="nav-btn" data-target="contact">Contact</button>
+                        </nav>
+                    </div>
+                </div>
+                <div class="face back yellow-page">
+                    <div class="page-content">
+                        <h2>About Me</h2>
+                        <p>Hi, I'm Ananya Almeida! I'm an undergraduate junior at Rutgers University New-Brunswick double majoring in Data Science and Statistics, with a minor in Biological Sciences. Go Scarlet Knights!</p>
+                        <div style="display: flex; gap: 10px; margin-top: 20px;">
+                            <button class="back-btn back-to-menu-btn" style="margin-top: 0;">← Back to Menu</button>
+                            <button class="nav-btn clean-sub-btn" data-target="wherefrom">Where I'm From →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-panel" id="layerWhereFrom" style="z-index: 18;">
+                <div class="face front pink-page">
+                    <div class="page-content full-gallery">
+                        <div class="photo-grid large-layout">
+                            <div class="photo-placeholder large-frame"><img src="soloone.jpg" alt="Me 1"></div>
+                            <div class="photo-placeholder large-frame"><img src="solotwo.jpg" alt="Me 2"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="face back yellow-page">
+                    <div class="page-content">
+                        <h2>Where I Grew Up</h2>
+                        <p>I've practically spent my whole life in New Jersey and I wouldn't have it any other way. If you drive 40 minutes, you hit the beach. If you drive an hour, you're in NYC. Best state if you ask me!</p>
+                        
+                        <h2 style="margin-top: 25px;">Where I'm From</h2>
+                        <p>If you take a flight to Mumbai, and drive an hour north, you arrive at my village: Manickpur. It's known for the ruins of the 500 year old Vasai Fort from the Portuguese Colonial era, hence why my last name, Almeida, is Portuguese.</p>
+                        
+                        <div style="display: flex; gap: 10px; margin-top: 20px;">
+                            <button class="back-btn back-to-about-btn" style="margin-top: 0;">← Back to About Me</button>
+                            <button class="back-btn back-to-menu-btn" style="margin-top: 0;">Main Menu →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-panel" id="layerEducation" style="z-index: 16;">
+                <div class="face front pink-page">
+                    <div class="page-content full-gallery">
+                        <div class="quad-photo-grid">
+                            <div class="mini-frame"><img src="vasaione.jpg" alt="Place 1"></div>
+                            <div class="mini-frame"><img src="vasaitwo.jpg" alt="Place 2"></div>
+                            <div class="mini-frame"><img src="vasaithree.jpg" alt="Place 3"></div>
+                            <div class="mini-frame"><img src="vasaifour.jpg" alt="Place 4"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="face back yellow-page">
+                    <div class="page-content">
+                        <h2>Education</h2>
+                        <p>I am earning my Bachelor of Science in Data Science (on the Computer Science track) and Statistics. I am also minoring in Biological Sciences.</p>
+                        <p> My expected graduation date is May 2028, I'm going to be a leap year graduate!</p>
+                        <p style="margin-top: 15px; font-size: 0.85rem;"> </p>
+                        <h4>Relevant Coursework</h4>
+                        <p>Data Structures, Data Wrangling & Management with R, Differential Equations, Discrete Mathematics, Multivariable Calculus, Principles of Information and Data Management, General Biology, General Physics, General Chemistry</p>
+                        <button class="back-btn back-to-menu-btn">← Back to Menu</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-panel" id="layerExperience" style="z-index: 14;">
+                <div class="face front pink-page">
+                    <div class="page-content">
+                        <h2>Work Goals</h2>
+                        <p style="font-size: 0.95rem; color: #333; text-align: center;">I'm particularly interested in applying data science and machine learning to healthcare, pharmaceutical research, and clinical decision-making. My coursework has provided a foundation in statistics, programming, and data analysis, which I continue to build through independent projects and research.</p>
+                    </div>
+                </div>
+                <div class="face back yellow-page">
+                    <div class="page-content">
+                        <h2>Experience</h2>
+                        <p>During Summer 2026, I worked as a Data Analytics and Systems Intern with ASCENDtials, a non-profit based in San Diego.</p>
+                        <p>For this role, I engineered an R-based data pipeline using tidyverse packages (ggplot2, dplyr, stringr) to clean, transform, and analyze multi-source stakeholder datasets and communicate findings through data visualizations and data modeling.</p>
+                        <button class="back-btn back-to-menu-btn">← Back to Menu</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-panel" id="layerProjects" style="z-index: 12;">
+                <div class="face front pink-page">
+                    <div class="page-content">
+                        <p style="font-size: 0.95rem; color: #333; text-align: center;">I'm actively searching for internship opportunities that apply data science concepts and statistical analysis to meaningful initiatives to solve real-world problems. </p>
+                    </div>
+                </div>
+                <div class="face back yellow-page">
+                    <div class="page-content">
+                        <h2>Projects</h2>
+                        <p style="margin-top: 15px; font-size: 0.85rem;"> </p>
+                        <h4>State-Level Cancer Incidence & Socioeconomic Correlation Study <a href="https://github.com/ananyaalmeida/State-Level-Cancer-Incidence-Socioeconomic-Correlation-Study" target="_blank" class="github-link">GitHub Link</a></h4>
+                        <p style="margin-top: 15px; font-size: 0.85rem;"> </p>
+                        <p>I developed a reproducible data pipeline in R with SQL queries and APIs to ingest CDC WONDER datasets and analyze the relationship between median household income and cancer incidence rates across 50 states.</p>
+                        <p style="margin-top: 15px; font-size: 0.85rem;"> </p>
+                        <p>I executed advanced data wrangling with tidyverse and sf to merge health outcomes with geographical data, creating interactive visualizations for regional disparity assessment.</p>
+                        <p style="margin-top: 15px; font-size: 0.85rem;"> </p>
+                        <p>I implemented statistical testing and residual analysis (linear regression) to investigate outliers, identifying specific geographic regions where health outcomes deviated significantly from economic predictions.</p>
+                        <button class="back-btn back-to-menu-btn">← Back to Menu</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-panel" id="layerLeadership" style="z-index: 10;">
+                <div class="face front pink-page">
+                    <div class="page-content">
+                        <h4>AI-Driven News Intelligence Simplifier (in progress)</h4>
+                        <p style="margin-top: 15px; font-size: 0.85rem;"> </p>
+                        <p>I'm architecturing an AI-driven web application using Python and Streamlit to ingest long-form news media, parse text semantic structures, and run automated large language model evaluations.</p>
+                        <p style="margin-top: 15px; font-size: 0.85rem;"> </p>
+                        <p>I've integrated a native REST API connection to Google Gemini using low-level HTTP POST requests to extract key insights from long-form news articles.</p>
+                        <p style="margin-top: 15px; font-size: 0.85rem;"> </p>
+                        <p>I also engineered an automated web scraping pipeline using Beautiful Soup featuring a dual-stream fallback engine that programmatically sanitizes raw HTML streams, handles user-agent spoofing, and extracts Open Graph metadata to handle search queries for real-time web discovery APIs with a 100% data-delivery success rate.</p>
+                    </div>
+                </div>
+                <div class="face back yellow-page">
+                    <div class="page-content">
+                        <h2>Leadership</h2>
+                        <p style="margin-bottom: 15px;">I serve on the e-boards for three student organizations at Rutgers: the Rutgers Data Science Organization, Rutgers Women in Data Science, and Rutgers Her Campus!</p>
+                        <p style="margin-top: 15px; font-size: 0.85rem;"></p>
+                        <h4 style="color: #333; margin-bottom: 5px;">Rutgers Data Science Club</h4>
+                        <p>I am on the corporate outreach team where I coordinate outreach initiatives with 10+ companies per week for a 500+ member organization.</p>
+                        <p style="margin-top: 15px; font-size: 0.85rem;"> </p>
+                        <h4 style="color: #333; margin-bottom: 5px;">Rutgers Women in Data Science (WiDS)</h4>
+                        <p style="margin-bottom: 15px;">I am the Events Coordinator where I collaborate with a team to develop and implement events focused on data science and professional development.</p>
+                        
+                        <button class="back-btn back-to-menu-btn" style="margin-top: 25px;">← Back to Menu</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-panel" id="layerHobbies" style="z-index: 8;">
+                <div class="face front pink-page">
+                    <div class="page-content">
+                        <h4 style="color: #333; margin-bottom: 5px;">Rutgers Her Campus</h4>
+                        <p>As the Social Media Coordinator, I post weekly on our social platforms and leverage analytics to identify high-performing content buckets, such as Reels and games. We sustained an average of 42k+ views per month over a 7-month period and successfully reversed a winter dip into a 58k-view growth milestone within 30 days</p>
+                        <div class="photo-grid large-layout">
+                            <div class="photo-placeholder large-frame"><img src="hercampus.jpg" alt="Me 1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="face back yellow-page">
+                    <div class="page-content">
+                        <h2>Hobbies</h2>
+                        <h4 style="margin-top: 7px; color: #333; margin-bottom: 5px;">Journaling</h4>
+                        <p>The number one thing I've consistently loved is writing. I've kept journals for the last 10+ years of my life (it's what inspired the layout for my website). The reason why I joined Her Campus my freshman year was so that I could exercise my writing skills in a different way!</p>
+                        <h4 style="margin-top: 15px; color: #333; margin-bottom: 5px;">Reading</h4>
+                        <p>I'm currently reading <i>The Winners</i> by Fredrik Backman, the last book in the <i>Beartown</i> trilogy. I'm excited to see what Backman does with these characters! </p>
+                        <p>A book I'll always recommend, is Rohinton Mistry's <i>A Fine Balance</i>; it's a harrowing story of four people who stumble into each other's lives. </p>
+                    
+                        <p>You can follow what I'm reading on my  <a href="https://www.goodreads.com/user/show/129438870-ananya" target="_blank" class="goodreads-link">Goodreads!</a> </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-panel" id="layerBase" style="z-index: 1;">
+                <div class="face front pink-page">
+                    <div class="page-content">
+                        <h4 style="color: #333; margin-bottom: 5px; margin-top: 5px;">Video Making</h4>
+                        <p style="margin-bottom: 15px;">Alongside writing, I love digital storytelling through video editing and production! Here are a few snapshot projects I have put together (unmute for the full experience):</p>
+                        
+                        <div class="quad-photo-grid" style="margin-top: 15px;">
+                            <div class="mini-frame">
+                                <video src="videoone.mov" controls muted width="100%" height="100%" style="object-fit: cover; border-radius: 8px;"></video>
+                            </div>
+                            <div class="mini-frame">
+                                <video src="videotwo.mov" controls muted width="100%" height="100%" style="object-fit: cover; border-radius: 8px;"></video>
+                            </div>
+                            <div class="mini-frame">
+                                <video src="videothree.mov" controls muted width="100%" height="100%" style="object-fit: cover; border-radius: 8px;"></video>
+                            </div>
+                            <div class="mini-frame">
+                                <video src="videofour.mov" controls muted width="100%" height="100%" style="object-fit: cover; border-radius: 8px;"></video>
+                            </div>
+                        </div>
+
+                        <button class="back-btn back-to-menu-btn" style="margin-top: 25px;">← Back to Menu</button>
+                    </div>
+                </div>
+                <div class="face back pink-cover">
+                    <div class="contact-cover-alignment">
+                        <div class="cover-content">
+                            <h2>Contact Me</h2>
+                            <p>Let's connect! Reach out via email, LinkedIn, or check out my live GitHub profile.</p>
+                            <p class="contact-email">ananya.almeida@gmail.com</p>
+                            
+                            <div class="contact-links">
+                                <a href="http://www.linkedin.com/in/ananya-almeida" target="_blank" class="contact-btn">My LinkedIn</a>
+                                <a href="https://github.com/ananyaalmeida" target="_blank" class="contact-btn">My GitHub</a>
+                            </div>
+                
+                            <button class="back-btn back-to-menu-btn">← Back to Menu</button>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
